@@ -28,7 +28,8 @@ regr.fit(train_x, train_y)
 print('Coefficients: ', regr.coef_)
 print('Intercept: ', regr.intercept_)
 
-plt.plot(train_x, regr.coef_[0][0]*train_x + regr.intercept_[0], '-r')
+plt.plot(train_x, regr.coef_[0][0]*train_x + regr.intercept_[0], '-g')
+#plt.plot(train_x, regr.predict(train_x), '-r')
 
 test_x = np.asanyarray(test[['SepalLength']])
 test_y = np.asanyarray(test[['PetalWidth']])
