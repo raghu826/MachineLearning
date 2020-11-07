@@ -4,6 +4,7 @@ import pylab as pl
 import numpy as np
 from sklearn import linear_model
 from sklearn.metrics import r2_score
+import joblib
 # matplotlib inline
 
 df = pd.read_csv(r'C:\Users\telelink\Contacts\Desktop\CanadaIncome.csv')
@@ -19,6 +20,11 @@ regr.fit(df[['Year']], df.PerCapitaIncome)
 print('Coefficients: ', regr.coef_)
 print('Intercept: ', regr.intercept_)
 plt.plot(df.Year, regr.predict(df[['Year']]), '-b')
+
+# joblib to save training data file
+joblib.dump(regr, 'regr_joblib')
+mj = joblib.load('regr_joblib')
+print('mj: ', mj.coef_)
 
 print(regr.predict([[2020]]))
 print("R2-score: %.2f" % r2_score(df.PerCapitaIncome, regr.predict(df[['Year']])))
