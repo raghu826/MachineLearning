@@ -7,14 +7,26 @@ from sklearn.metrics import r2_score
 # matplotlib inline
 
 df = pd.read_csv(r'C:\Users\telelink\Contacts\Desktop\irisDataSet.csv')
-cdf = df.drop(columns=['Unnamed: 0'])
-newData = cdf.rename(columns={"Sepal.Length": "SepalLength","Petal.Length": "PetalLength",
-                      "Sepal.Width": "SepalWidth","Petal.Width": "PetalWidth"})
-print(newData.head())
+print(df.head())
 
-msk = np.random.rand(len(newData)) < 0.7
-train = newData[msk]
-test = newData[~msk]
+dummies = pd.get_dummies(df['Species'])
+print(dummies)
+# Create a subset of the Iris data that contains only the sepal length attribute, and only the setosa and
+# virginica classes. Draw a scatterplot showing the attribute on the x-axis and the class on the y-axis.
+
+cdf = df[['SepalLength', 'Species']]
+cdf = cdf[cdf['Species'].isin(['setosa', 'virginica'])]
+cdf = cdf.reset_index(drop=True)
+plt.scatter(cdf.SepalLength, cdf.Species, c='b')
+plt.xlabel('Sepal length')
+plt.ylabel('Species')
+
+# dummies = pd.get_dummies(df['Species'])
+# print(dummies)
+
+msk = np.random.rand(len(df)) < 0.7
+train = df[msk]
+test = df[~msk]
 
 plt.scatter(train.SepalLength, train.PetalWidth,  color='blue')
 plt.xlabel("SepalLength")

@@ -22,8 +22,8 @@ print('Intercept: ', regr.intercept_)
 plt.plot(df.Year, regr.predict(df[['Year']]), '-b')
 
 # joblib to save training data file
-joblib.dump(regr, 'regr_joblib')
-mj = joblib.load('regr_joblib')
+joblib.dump(regr, 'LinRegCanadaIncome')
+mj = joblib.load('LinRegCanadaIncome.')
 print('mj: ', mj.coef_)
 
 print(regr.predict([[2020]]))
