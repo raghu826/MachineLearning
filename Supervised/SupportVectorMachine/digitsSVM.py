@@ -1,7 +1,10 @@
 from sklearn.datasets import load_digits
+import matplotlib.pyplot as plt
+import seaborn as sns
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
+from sklearn import *
 
 digits = load_digits()
 print(dir(digits))
@@ -16,8 +19,19 @@ X_train, X_test, y_train, y_test = train_test_split(df.drop('target', axis='colu
 rbf_model = SVC(kernel='rbf')
 rbf_model.fit(X_train, y_train)
 print('kernal rbf accuracy : ', rbf_model.score(X_test, y_test))
+y_predicted = rbf_model.predict(X_test)
+
+# Implemented Confusion Matrix'
+cm = metrics.confusion_matrix(y_test, y_predicted)
+print(cm)
+plt.figure(figsize=(10,8))
+sns.heatmap(cm, annot=True)
+plt.xlabel('Predicted')
+plt.ylabel('Truth')
 
 # using linear kernel
 linear_model = SVC(kernel='linear')
 linear_model.fit(X_train, y_train)
-print('kernal rbf accuracy : ', linear_model.score(X_test, y_test))
+print('kernal linear accuracy : ', linear_model.score(X_test, y_test))
+
+plt.show()
