@@ -31,12 +31,12 @@ plt.scatter(df2['petal length (cm)'], df2['petal width (cm)'], color='green', la
 plt.scatter(df3['petal length (cm)'], df3['petal width (cm)'], color='yellow', label='virginica')
 plt.legend()
 
-# k_range = range(1,10)  # elbow method to find the better k value
-# sse= []                # array to store
-# for k in k_range:
-#     km = KMeans(n_clusters=k)
-#     km.fit(df)
-#     sse.append(km.inertia_)
+k_range = range(1,10)  # elbow method to find the better k value
+sse= []                # array to store
+for k in k_range:
+    km = KMeans(n_clusters=k)
+    km.fit(df)
+    sse.append(km.inertia_)
 
 plt.plot(k_range, sse)
 plt.xlabel('k')
