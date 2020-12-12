@@ -1,0 +1,34 @@
+# Importing the libraries
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+import scipy.cluster.hierarchy as sch
+from sklearn.cluster import AgglomerativeClustering
+
+# Importing the dataset
+df = pd.read_csv(r'C:\Users\telelink\Contacts\Desktop\DataSets\irisDataSet.csv')
+df = df.drop(['SepalLength', 'SepalWidth', 'Species'], axis='columns')
+
+# Using the dendrogram to find the optimal number of clusters
+dendrogram = sch.dendrogram(sch.linkage(df[['PetalLength', 'PetalWidth']], method = 'ward'))
+plt.title('Dendrogram')
+plt.xlabel('Customers')
+plt.ylabel('Euclidean distances')
+
+# Training the Hierarchical Clustering model on the dataset
+hc = AgglomerativeClustering(n_clusters = 3, affinity = 'euclidean', linkage = 'ward')
+y_hc = hc.fit_predict(df[['PetalLength', 'PetalWidth']])
+print(y_hc)
+
+# Visualising the clusters
+df['cluster'] = y_hc   # add y_pred(clusters) values to dataframe
+print(df.head())
+
+df1 = df[df.cluster == 0]  # created different dataframe for each cluster
+df2 = df[df.cluster == 1]
+df3 = df[df.cluster == 2]
+plt.scatter(df1.PetalLength, df1['PetalWidth'], color='green', label='Cluster1')
+plt.scatter(df2.PetalLength, df2['PetalWidth'], color='red', label='Cluster2')
+plt.scatter(df3.PetalLength, df3['PetalWidth'], color='black', label='Cluster3')
+plt.legend()
+plt.show()
