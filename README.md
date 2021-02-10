@@ -4,6 +4,7 @@ This Repository contains the models of Machine Learning Algorithms such as:
     - Classification : Decision Tree, Random Forest, SVM
   - UnSupervised
     - Clustering Techniques : KMeans
+    
 These algorithms are implemented on the data in the 'DataSets' folder. 
 The main libraries used in these models are Scikit-learn, Pandas, numpy, matplotlib.
 
