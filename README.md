@@ -5,7 +5,8 @@ This Repository contains the models of Machine Learning Algorithms such as:
   - UnSupervised
     - Clustering Techniques : KMeans
 These algorithms are implemented on the data in the 'DataSets' folder. 
-The main libraries used in these models are Scikit-learn, Pandas, numpy, matplotlib 
+The main libraries used in these models are Scikit-learn, Pandas, numpy, matplotlib.
+
 The model involves
   - Data preprocessing(data cleaning, deals with missing value, Encoding categorical data)
   - Data Visualisation
