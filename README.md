@@ -1,8 +1,8 @@
-This Repository contains the models of Machine Learning Algorithms such as:
-  - Supervised
+# This Repository contains the models of Machine Learning Algorithms such as:
+  - ## [Supervised](https://github.com/raghu826/MachineLearning/tree/master/Supervised)
     - Regression : Linear, Ploynomial, Logistic Regression 
     - Classification : Decision Tree, Random Forest, SVM
-  - UnSupervised
+  - ## [UnSupervised](https://github.com/raghu826/MachineLearning/tree/master/UnSupervised)
     - Clustering Techniques : KMeans
     
 These algorithms are implemented on the data in the 'DataSets' folder. 
